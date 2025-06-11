@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temple Website </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+</head>
+<body>
+<style>
+
+
+    /* General Styling */
+:root {
+    --primary-color: #8B0000; /* Deep Red for temple feel */
+    --secondary-color: #FFD700; /* Gold/Yellow for accents */
+    --text-color: #333;
+    --light-bg: #f9f9f9;
+    --white: #ffffff;
+    --dark-bg: #222;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-bg);
+    scroll-behavior: smooth; /* Added for smooth scrolling */
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+h1, h2, h3 {
+    font-family: 'Merriweather', serif;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+h2:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--secondary-color);
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #6a0000; /* Darker red on hover */
+}
+
+/* Header */
+.main-header {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--white);
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.main-nav ul li {
+    margin-left: 25px;
+}
+
+.main-nav ul li a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.main-nav ul li a:hover {
+    color: var(--secondary-color);
+}
+
+.menu-toggle {
+    display: none; /* Hidden on desktop */
+    font-size: 1.8em;
+    cursor: pointer;
+}
+
+/* Hero Section */
+.hero-section {
+    background: url('temple-hero.jpg') no-repeat center center/cover; /* Placeholder image */
+    color: var(--white);
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay for readability */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+}
+
+.hero-content h2 {
+    font-size: 3.5em;
+    margin-bottom: 15px;
+    color: var(--white);
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: var(--white);
+}
+
+/* Section Styling (General) */
+section {
+    padding: 80px 0;
+}
+
+section:nth-of-type(even) {
+    background-color: var(--light-bg);
+}
+
+/* About Section */
+.about-section .about-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: center;
+}
+
+.about-section .about-image {
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.about-section p {
+    flex: 2;
+    min-width: 300px;
+}
+
+/* Services Section */
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    text-align: center;
+}
+
+.service-item {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.service-item .icon {
+    font-size: 3em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.service-item h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+/* Contact Section */
+.contact-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+}
+
+.contact-info, .contact-form {
+    flex: 1;
+    min-width: 300px;
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.contact-info h3, .contact-form h3 {
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    font-size: 1.8em;
+}
+
+.contact-info p {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.contact-info p i {
+    color: var(--secondary-color);
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+.social-links {
+    margin-top: 25px;
+}
+
+.social-links a {
+    color: var(--primary-color);
+    font-size: 1.8em;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--secondary-color);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+/* Footer */
+.main-footer {
+    background-color: var(--dark-bg);
+    color: #ccc;
+    text-align: center;
+    padding: 30px 0;
+    font-size: 0.9em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .logo {
+        font-size: 1.5em;
+    }
+
+    .main-nav {
+        position: absolute;
+        top: 60px; /* Adjust based on header height */
+        left: 0;
+        width: 100%;
+        background-color: var(--primary-color);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        display: none; /* Hidden by default */
+    }
+
+    .main-nav.active {
+        display: block; /* Shown when active */
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        padding: 20px 0;
+        text-align: center;
+    }
+
+    .main-nav ul li {
+        margin: 10px 0;
+    }
+
+    .menu-toggle {
+        display: block; /* Show hamburger icon */
+    }
+
+    .hero-content h2 {
+        font-size: 2.5em;
+    }
+
+    .hero-content p {
+        font-size: 1em;
+    }
+
+    .about-section .about-content {
+        flex-direction: column;
+    }
+
+    .about-section .about-image {
+        max-width: 100%;
+    }
+
+    .contact-grid {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 2em;
+    }
+
+    .hero-content h2 {
+        font-size: 2em;
+    }
+}
+</style>
+</head>
+<body>
+     <header class="main-header">
+        <div class="container">
+            <h1 class="logo">Sri Venkateswara Temple</h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Experience Divine Serenity</h2>
+                    <p>Welcome to a sacred abode nestled in the heart of Andhra Pradesh, where peace and devotion intertwine.</p>
+                    <a href="#about" class="btn">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2>About Our Temple</h2>
+                <div class="about-content">
+                    <img src="./venkateswara swamy.jpg" alt="Temple Interior" class="about-image">
+                    <p>
+                        The Sri Venkateswara Temple, a beacon of spiritual enlightenment, stands majestically amidst the serene landscapes of Andhra Pradesh. With a history spanning centuries, our temple is dedicated to Lord Venkateswara, an incarnation of Vishnu, and serves as a vital center for pilgrims and devotees worldwide.
+                    </p>
+                    <p>
+                        Our mission is to foster spiritual growth, preserve ancient traditions, and provide a welcoming sanctuary for all who seek divine blessings and tranquility. We uphold the rich cultural heritage of our region through various religious ceremonies, festivals, and community initiatives.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="services-section">
+            <div class="container">
+                <h2>Our Services</h2>
+                <div class="service-grid">
+                    <div class="service-item">
+                        
+                        <a href="#daily-poojas" style="text-decoration: none; color: inherit;">
+                            <i class="fas fa-praying-hands icon"></i>
+                            <h3>Daily Poojas & Archanas</h3>
+                            <p>Participate in daily rituals and offerings to receive blessings from the deities.</p>
+                        </a>
+                    </div>
+                    <div class="service-item">
+                        <a href="#festivals-events" style="text-decoration: none; color: inherit;">
+                            <i class="fas fa-calendar-alt icon"></i>
+                            <h3>Festivals & Events</h3>
+                            <p>Join us in celebrating various auspicious festivals throughout the year.</p>
+                        </a>
+                    </div>
+                    <div class="service-item">
+                        <a href="#spiritual-discourses" style="text-decoration: none; color: inherit;">
+                            <i class="fas fa-book-reader icon"></i>
+                            <h3>Spiritual Discourses</h3>
+                            <p>Attend enlightening talks and lectures on ancient scriptures and spiritual wisdom.</p>
+                        </a>
+                    </div>
+                    <div class="service-item">
+                        <a href="#community-seva" style="text-decoration: none; color: inherit;">
+                            <i class="fas fa-hand-holding-heart icon"></i>
+                            <h3>Community Seva</h3>
+                            <p>Engage in selfless service and contribute to various community welfare programs.</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="daily-poojas" class="detailed-service-section">
+            <div class="container">
+                <h2>Daily Poojas & Archanas</h2>
+                <p>
+                    Experience the profound spiritual energy of our daily rituals. Devotees can participate in a variety of poojas (worship ceremonies) and archanas (offerings of prayers and chants) performed by our revered priests throughout the day. These ceremonies are conducted with strict adherence to Vedic traditions and are designed to invoke divine blessings for peace, prosperity, and well-being.
+                </p>
+                <p>
+                    Offerings typically include flowers, fruits, milk, and other sacred items. Specific timings for each puja are available at the temple's information desk. You can sponsor a pooja in your name or the name of your loved ones to receive special blessings.
+                </p>
+                <ul>
+                    <li>**Morning Arathi**: 6:00 AM</li>
+                    <li>**Abhishekam**: 7:00 AM (daily for specific deities)</li>
+                    <li>**Mid-day Pooja**: 12:00 PM</li>
+                    <li>**Evening Arathi**: 7:00 PM</li>
+                    <li>**Saharanamam Archana**: Available upon request throughout the day.</li>
+                </ul>
+                <p>For more details or to schedule a specific puja, please contact the temple office.</p>
+            </div>
+        </section>
+
+        <section id="festivals-events" class="detailed-service-section">
+            <div class="container">
+                <h2>Festivals & Events</h2>
+                <p>
+                    Our temple is a vibrant hub of cultural and spiritual celebrations, hosting numerous festivals and special events throughout the year. These occasions bring together devotees from all walks of life to celebrate the rich traditions of Hinduism.
+                </p>
+                <p>
+                    Major festivals like Brahmotsavam, Diwali, Navaratri, and Vaikunta Ekadasi are celebrated with immense grandeur, featuring elaborate processions, traditional music, dance performances, and devotional discourses. We also organize community events, cultural programs, and educational workshops to promote spiritual understanding and foster a sense of unity.
+                </p>
+                <p>
+                    Check our annual calendar for upcoming events and be a part of these joyous celebrations. Volunteers are always welcome to help organize and manage these grand affairs.
+                </p>
+                <ul>
+                    <li>**Brahmotsavam**: Annually in October (dates vary)</li>
+                    <li>**Diwali**: As per lunar calendar</li>
+                    <li>**Navaratri**: As per lunar calendar</li>
+                    <li>**New Year's Day**: Special prayers and darshan</li>
+                    <li>**Other auspicious days**: Specific dates announced regularly</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="spiritual-discourses" class="detailed-service-section">
+            <div class="container">
+                <h2>Spiritual Discourses</h2>
+                <p>
+                    Delve deeper into the ocean of spiritual wisdom through our regular spiritual discourses and lectures. Renowned scholars, saints, and spiritual leaders visit our temple to share insights from ancient scriptures, philosophical texts, and the lives of great devotees.
+                </p>
+                <p>
+                    These discourses cover a wide range of topics, including the teachings of the Bhagavad Gita, Upanishads, Puranas, and various paths of yoga and meditation. They provide guidance on leading a righteous life, overcoming challenges, and achieving inner peace and liberation.
+                </p>
+                <p>
+                    Open to all, these sessions are a wonderful opportunity to learn, reflect, and grow spiritually. Check the temple notice board or website for the schedule of upcoming discourses and speakers.
+                </p>
+                <ul>
+                    <li>**Weekly Gita Classes**: Every Sunday, 10:00 AM</li>
+                    <li>**Special Guest Lectures**: Announced periodically</li>
+                    <li>**Meditation Workshops**: Monthly sessions</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="community-seva" class="detailed-service-section">
+            <div class="container">
+                <h2>Community Seva</h2>
+                <p>
+                    Embrace the spirit of selfless service (seva) by participating in our various community welfare programs. The temple is committed to giving back to society and supports initiatives that benefit the less fortunate and contribute to the overall well-being of the community.
+                </p>
+                <p>
+                    Our seva activities include अन्नदान (Annadaan - food donation) for the needy, health camps, educational support for underprivileged children, environmental protection drives, and disaster relief efforts.
+                </p>
+                <p>
+                    Your time, skills, and donations can make a significant difference. Join our team of dedicated volunteers and experience the joy of serving humanity.
+                </p>
+                <ul>
+                    <li>**Annadaan (Food Distribution)**: Every Tuesday and Saturday</li>
+                    <li>**Health Check-up Camps**: Quarterly</li>
+                    <li>**Educational Sponsorship Programs**: Ongoing</li>
+                    <li>**Temple Maintenance & Beautification**: Daily volunteer opportunities</li>
+                </ul>
+            </div>
+        </section>
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Get in Touch</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Temple Road, Tirupati, Andhra Pradesh, India</p>
+                        <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                        <p><i class="fas fa-envelope"></i> info@aptemple.org</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <h3>Send us a Message</h3>
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn submit-btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Sri Venkateswara Temple. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('.main-nav ul').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
